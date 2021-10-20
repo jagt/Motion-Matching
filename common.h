@@ -42,10 +42,10 @@ static inline float fast_negexpf(float x)
 
 static inline float fast_atanf(float x)
 {
-    float z = fabs(x);
+    float z = (float)fabs(x);
     float w = z > 1.0f ? 1.0f / z : z;
     float y = (PIf / 4.0f)*w - w*(w - 1.0f)*(0.2447f + 0.0663f*w);
-    return copysign(z > 1.0f ? PIf / 2.0f - y : y, x);
+    return (float)copysign(z > 1.0f ? PIf / 2.0f - y : y, x);
 }
 
 static inline int clamp(int x, int min, int max)
